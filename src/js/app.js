@@ -1,3 +1,5 @@
+var myInboxSize = 0;
+
 App = {
   web3Provider: null,
   contracts: {},
@@ -20,6 +22,26 @@ App = {
       return null;
     }
 
+    // let currentAcc = null;
+    // ethereum.request({ method : 'eth_accounts' }).then(handleAccountsChanged).catch((err) => {
+    //   alert("There was an error");
+    //   return;
+    // }
+
+    // ethereum.on('accountsChanged', handleAccountsChanged);
+
+    // function handleAccountsChanged(accounts) {
+    //   if(accounts.length === 0) {
+    //     App.setStatus("Please login to MetaMask");
+    //     alert("Could not fetch your account. Make sure you are logged in to MetaMask, then refresh the page.");
+    //     return;
+    //   } else if(accounts[0] != currentAcc) {
+    //     currentAcc = accounts[0];
+    //   }
+
+    //   return App.initContract();
+    // }
+
     web3.eth.getAccounts(function(err, accs) {
       if (err != null) {
         alert("There was an error fetching your account, please try again later.");
@@ -34,6 +56,7 @@ App = {
       }
       return App.initContract();
     });
+    
   },
 
   initContract: function() {
